@@ -1,10 +1,11 @@
-import "@/styles/globals.css";
+import { useEffect, useState } from "react";
+import { broadcastQueryClient } from "@tanstack/query-broadcast-client-experimental";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
-import { useEffect, useState } from "react";
-import {broadcastQueryClient} from '@tanstack/query-broadcast-client-experimental'
 
-const DEFAULT_STALE_TIME = 1000 * 60 * 5 // 5 minutes
+import "../src/styles/globals.css";
+
+const DEFAULT_STALE_TIME = 1000 * 60 * 5; // 5 minutes
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -17,15 +18,14 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         },
       }),
-  )
+  );
 
-    useEffect(() => {
-      return broadcastQueryClient({
-        queryClient,
-        broadcastChannel: 'tanstack-query',
-      })
-    }, [queryClient])
-
+  useEffect(() => {
+    return broadcastQueryClient({
+      queryClient,
+      broadcastChannel: "tanstack-query",
+    });
+  }, [queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
