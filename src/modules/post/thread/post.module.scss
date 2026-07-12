@@ -10,6 +10,12 @@
     align-items: center;
     width: 100%;
     gap: 0.5rem;
+    position: relative;
+
+    button {
+      position: absolute;
+      left: -3.25rem;
+    }
 
     .actions {
       margin-left: auto;

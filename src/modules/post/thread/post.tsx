@@ -1,35 +1,39 @@
 import { ArrowLeft, Ellipsis, MessageCircle } from 'lucide-react'
+import { useRouter } from 'next/router'
 
 import { Avatar } from '@/components/avatar'
 import { Button } from '@/components/button'
+import { Post } from '@/types/post'
 
 import styles from './post.module.scss'
 
-export const ThreadPost = () => {
+interface PostThreadProps {
+  post: Post
+  comments_counter: number | null
+}
+
+export const ThreadPost = ({ post, comments_counter }: PostThreadProps) => {
+  const router = useRouter()
+
   return (
     <div className={styles.post}>
       <div className={styles.header}>
-        <Button size="medium" variant="secondary" icon={<ArrowLeft />} iconButton />
-        <Avatar layout="vertical" />
+        <Button size="medium" variant="secondary" icon={<ArrowLeft />} iconButton onClick={router.back} />
+        <Avatar layout="vertical" name={post.name} avatar={post.avatar} date={post.createdAt} />
         <div className={styles.actions}>
           <Ellipsis />
         </div>
       </div>
       <div className={styles.body}>
-        <div className={styles.title}>What is Lorem Ipsum?</div>
-        <div className={styles.content}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry
-          standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride
-          Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset
-          Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop
-          publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.
-        </div>
+        <div className={styles.title}>{post.title}</div>
+        <div className={styles.content}>{post.content}</div>
       </div>
       <div className={styles.footer}>
-        <Button size="small" variant="secondary" className={styles.comments} icon={<MessageCircle />}>
-          100
-        </Button>
+        {comments_counter && (
+          <Button size="small" variant="secondary" className={styles.comments} icon={<MessageCircle />}>
+            {comments_counter}
+          </Button>
+        )}
       </div>
     </div>
   )

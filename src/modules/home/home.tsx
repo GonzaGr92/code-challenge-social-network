@@ -1,29 +1,22 @@
 import { Fragment } from 'react/jsx-runtime'
 
-import { useGetPosts } from '@/hooks/api/post'
-import { Loading } from '@/icons/loading'
+import { Post } from '@/types/post'
 
 import { HomePost } from './post'
 
 import styles from './home.module.scss'
 
-export const Home = () => {
-  const { isLoading, error, data } = useGetPosts()
+interface HomeProps {
+  posts: Post[]
+}
 
-  if (isLoading) {
-    return <Loading />
-  }
-
-  if (error || !data || data.length === 0) {
-    return 'Not able to show content at this time, please retry later'
-  }
-
+export const Home = ({ posts }: HomeProps) => {
   return (
     <div className={styles.home}>
-      {data.map((post, index) => (
-        <Fragment key={post.id}>
+      {posts.map((post, index) => (
+        <Fragment key={`home-${post.id}`}>
           <HomePost post={post} />
-          {index + 1 < data.length && <hr />}
+          {index + 1 < posts.length && <hr />}
         </Fragment>
       ))}
     </div>

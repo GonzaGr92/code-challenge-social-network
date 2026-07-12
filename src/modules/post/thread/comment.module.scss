@@ -3,8 +3,46 @@
   flex-direction: column;
   margin: 0.1rem auto;
   gap: 0.5rem;
+  width: 100%;
+  position: relative;
+  transition: ease-in;
+
+  &[hidden] {
+    display: none;
+    transition: ease-out;
+  }
+
+  .comment {
+    margin-left: 2rem;
+  }
 
   .content {
+    margin-left: 2rem;
     font-size: 0.875rem;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    align-items: center;
+    margin-left: 0.25rem;
+  }
+
+  &:has(.comment)::before,
+  &.parent:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: calc(100% - 1rem);
+    background-color: var(--border-color);
+    left: 0.75rem;
+    top: calc(1.5rem + 3px);
+  }
+
+  &:not(:has(.comment)) {
+    .footer {
+      margin-left: 1.5rem;
+    }
   }
 }

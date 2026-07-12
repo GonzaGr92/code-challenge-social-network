@@ -2,16 +2,22 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 
 import { COMMENT_CACHE_KEY_NAMESPACE, HOST_ID } from '@/constants'
-import { NewComment } from '@/types/comment'
+import { Comment, NestedComment, NewComment } from '@/types/comment'
+import { buildCommentTree } from '@/utils/builder'
 
 // Fetchers
 
-async function getComments(postId: string) {
+async function getComments(postId: string): Promise<NestedComment[]> {
   if (!postId) {
     throw new Error('Post ID is required')
   }
 
-  const { data } = await axios.get(`https://${HOST_ID}.mockapi.io/post/${postId}/comment`)
+  const { data } = await axios.get<Comment[]>(`https://${HOST_ID}.mockapi.io/post/${postId}/comment`)
+
+  if (data) {
+    return buildCommentTree(data)
+  }
+
   return data
 }
 
