@@ -1,15 +1,16 @@
-import { Ellipsis, MessageCircle } from 'lucide-react'
+import { ArrowLeft, Ellipsis, MessageCircle } from 'lucide-react'
 
 import { Avatar } from '@/components/avatar'
 import { Button } from '@/components/button'
 
 import styles from './post.module.scss'
 
-export const HomePost = () => {
+export const ThreadPost = () => {
   return (
     <div className={styles.post}>
       <div className={styles.header}>
-        <Avatar layout="horizontal" />
+        <Button size="medium" variant="secondary" icon={<ArrowLeft />} iconButton />
+        <Avatar layout="vertical" />
         <div className={styles.actions}>
           <Ellipsis />
         </div>

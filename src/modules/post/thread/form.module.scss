@@ -1,0 +1,28 @@
+.threadForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  * > {
+    width: 100%;
+  }
+
+  input {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: ease-in;
+  }
+}

@@ -4,16 +4,41 @@
   align-items: center;
 
   .avatar {
-    width: 1.5rem;
-    height: 1.5rem;
     border-radius: 50%;
     margin-right: 0.5rem;
     background-color: var(--foreground);
+    padding: 0.15rem;
   }
 
   .name {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--text-primary);
+  }
+
+  .date {
+    position: relative;
+
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    top: 1.5px;
+
+    span {
+      margin: 0 0.325rem;
+    }
+  }
+
+  &.horizontal {
+    .avatar {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &.vertical {
+    .avatar {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }

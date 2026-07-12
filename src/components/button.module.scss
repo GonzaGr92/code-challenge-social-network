@@ -12,9 +12,46 @@
     align-items: center;
   }
 
+  &.iconButton {
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+
+    &.small {
+      width: 2rem;
+      height: 2rem;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    &.medium {
+      width: 2.5rem;
+      height: 2.5rem;
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    &.large {
+      width: 3rem;
+      height: 3rem;
+
+      svg {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+
   &.small {
     padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
 
     .icon {
       width: calc(0.75rem + 0.25rem);
@@ -65,6 +102,15 @@
     &:hover {
       background-color: var(--foreground);
       color: var(--background);
+    }
+  }
+
+  &.text {
+    background-color: var(--background);
+    color: var(--foreground);
+
+    &:hover {
+      background-color: var(--hover);
     }
   }
 

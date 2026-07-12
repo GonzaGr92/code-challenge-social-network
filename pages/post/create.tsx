@@ -1,5 +1,5 @@
-import { Post } from '@/modules/post'
+import { PostForm } from '@/modules/post/create/form'
 
 export default function CreatePostPage() {
-  return <Post />
+  return <PostForm />
 }

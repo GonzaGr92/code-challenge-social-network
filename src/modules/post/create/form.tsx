@@ -1,10 +1,10 @@
 import { Button } from '@/components/button'
 
-import styles from './post.module.scss'
+import styles from './form.module.scss'
 
-export const Post = () => {
+export const PostForm = () => {
   return (
-    <div className={styles.post}>
+    <div className={styles.form}>
       <input className={styles.input} placeholder="Write a title..." />
       <hr />
       <textarea className={styles.textarea} placeholder="Write a comment..." rows={5} />
