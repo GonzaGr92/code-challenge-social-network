@@ -81,6 +81,10 @@ hr {
   html {
     color-scheme: dark;
   }
+
+  .loading {
+    filter: invert(75%);
+  }
 }
 
 .flex-vertical {

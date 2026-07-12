@@ -6,12 +6,12 @@ import { NewPost, Post } from '@/types/post'
 
 // Fetchers
 
-async function getPosts() {
+async function getPosts(): Promise<Post[]> {
   const { data } = await axios.get(`https://${HOST_ID}.mockapi.io/post`)
   return data
 }
 
-async function getPost(id: string) {
+async function getPost(id: string): Promise<Post> {
   if (!id) {
     throw new Error('Post ID is required')
   }
