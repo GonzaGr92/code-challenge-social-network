@@ -1,7 +1,75 @@
 .button {
-  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
   font-weight: 500;
   border-radius: 1rem;
   border: none;
-  font-size: 1rem;
+  cursor: pointer;
+
+  .icon {
+    margin-right: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &.small {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+
+    .icon {
+      width: calc(0.75rem + 0.25rem);
+    }
+  }
+
+  &.medium {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+
+    .icon {
+      width: calc(1rem + 0.25rem);
+    }
+  }
+
+  &.large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+
+    .icon {
+      width: calc(1.25rem + 0.25rem);
+    }
+  }
+
+  &.primary {
+    background-color: var(--button-primary);
+    color: var(--background);
+
+    &:hover {
+      background-color: var(--button-primary-hover);
+    }
+  }
+
+  &.secondary {
+    background-color: var(--button-secondary);
+    color: var(--foreground);
+
+    &:hover {
+      background-color: var(--button-secondary-hover);
+    }
+  }
+
+  &.outline {
+    background-color: var(--background);
+    color: var(--foreground);
+    border: 1px solid var(--foreground);
+
+    &:hover {
+      background-color: var(--foreground);
+      color: var(--background);
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }

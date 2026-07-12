@@ -1,0 +1,19 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    background-color: var(--foreground);
+  }
+
+  .name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+}

@@ -1,0 +1,52 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 0.1rem auto;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    background-color: var(--hover);
+    cursor: pointer;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+
+    .date {
+      position: relative;
+
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      top: 1px;
+
+      span {
+        margin: 0 0.325rem;
+      }
+    }
+
+    .actions {
+      margin-left: auto;
+    }
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .content {
+      font-size: 0.875rem;
+    }
+  }
+}

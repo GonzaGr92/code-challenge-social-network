@@ -1,9 +1,5 @@
-import styles from '../src/styles/Home.module.scss'
+import { Home } from '@/modules/home/home'
 
-export default function Home() {
-  return (
-    <>
-      <div className={`${styles.page}`}></div>
-    </>
-  )
+export default function HomePage() {
+  return <Home />
 }
