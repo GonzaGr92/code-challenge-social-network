@@ -4,6 +4,7 @@ import axios from 'axios'
 import { COMMENT_CACHE_KEY_NAMESPACE, HOST_ID } from '@/constants'
 import { Comment, NestedComment, NewComment } from '@/types/comment'
 import { buildCommentTree } from '@/utils/builder'
+import { mostRecentFirst } from '@/utils/date'
 
 // Fetchers
 
@@ -15,7 +16,7 @@ async function getComments(postId: string): Promise<NestedComment[]> {
   const { data } = await axios.get<Comment[]>(`https://${HOST_ID}.mockapi.io/post/${postId}/comment`)
 
   if (data) {
-    return buildCommentTree(data)
+    return buildCommentTree(data).sort(mostRecentFirst)
   }
 
   return data

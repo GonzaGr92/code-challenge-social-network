@@ -3,12 +3,12 @@ import axios from 'axios'
 
 import { HOST_ID, POST_CACHE_KEY_NAMESPACE } from '@/constants'
 import { NewPost, Post } from '@/types/post'
+import { mostRecentFirst } from '@/utils/date'
 
 // Fetchers
-
 async function getPosts(): Promise<Post[]> {
-  const { data } = await axios.get(`https://${HOST_ID}.mockapi.io/post`)
-  return data
+  const { data } = await axios.get<Post[]>(`https://${HOST_ID}.mockapi.io/post`)
+  return data.sort(mostRecentFirst)
 }
 
 async function getPost(id: string): Promise<Post> {
@@ -31,7 +31,6 @@ async function deletePost(id: string): Promise<void> {
 }
 
 // Hooks
-
 export const useGetPosts = () => {
   return useQuery({
     queryKey: [POST_CACHE_KEY_NAMESPACE, 'useGetPosts'],

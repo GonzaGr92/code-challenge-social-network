@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import { broadcastQueryClient } from '@tanstack/query-broadcast-client-experimental'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
@@ -38,6 +39,14 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <QueryClientProvider client={queryClient}>
         <main className="container">
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            draggable
+            //TODO: Adjust theme
+            theme="dark"
+          />
           <Component {...pageProps} />
         </main>
       </QueryClientProvider>

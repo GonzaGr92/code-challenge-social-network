@@ -25,7 +25,7 @@ export const PostThread = ({ post }: PostThreadProps) => {
       </div>
       <div className={styles.comments}>
         {isLoading ? (
-          <Loading />
+          <Loading size="medium" />
         ) : error || !data ? (
           'Not able to get comments please retry later'
         ) : data.length <= 0 ? (

@@ -11,7 +11,7 @@ export default function PostPage() {
   const { data, isLoading, error } = useGetPost(id as string)
 
   if (isLoading) {
-    return <Loading />
+    return <Loading size="large" />
   }
 
   if (error || !data) {

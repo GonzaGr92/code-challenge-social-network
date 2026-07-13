@@ -6,7 +6,7 @@ export default function HomePage() {
   const { isLoading, error, data } = useGetPosts()
 
   if (isLoading) {
-    return <Loading />
+    return <Loading size="large" />
   }
 
   if (error || !data || data.length === 0) {

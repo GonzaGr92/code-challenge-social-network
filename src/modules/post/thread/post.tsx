@@ -2,6 +2,7 @@ import { ArrowLeft, Ellipsis, MessageCircle } from 'lucide-react'
 import { useRouter } from 'next/router'
 
 import { Avatar } from '@/components/avatar'
+import { BackButton } from '@/components/back-button'
 import { Button } from '@/components/button'
 import { Post } from '@/types/post'
 
@@ -13,12 +14,10 @@ interface PostThreadProps {
 }
 
 export const ThreadPost = ({ post, comments_counter }: PostThreadProps) => {
-  const router = useRouter()
-
   return (
     <div className={styles.post}>
       <div className={styles.header}>
-        <Button size="medium" variant="secondary" icon={<ArrowLeft />} iconButton onClick={router.back} />
+        <BackButton className={styles.backButton} />
         <Avatar layout="vertical" name={post.name} avatar={post.avatar} date={post.createdAt} />
         <div className={styles.actions}>
           <Ellipsis />
