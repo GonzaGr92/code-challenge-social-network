@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router'
+
 import styles from './avatar.module.scss'
 
 interface AvatarProps {
@@ -8,6 +10,8 @@ interface AvatarProps {
 }
 
 export const Avatar = ({ layout, avatar, name, date }: AvatarProps) => {
+  const router = useRouter()
+
   return (
     <div className={`${styles.user} ${styles[layout]}`}>
       <div className={styles.avatar}>
@@ -17,7 +21,7 @@ export const Avatar = ({ layout, avatar, name, date }: AvatarProps) => {
           alt="User Avatar"
           onError={({ currentTarget }) => {
             currentTarget.onerror = null // Prevents infinite loops if fallback fails
-            currentTarget.src = '/no-user.webp'
+            currentTarget.src = `${router.basePath}/no-user.webp`
           }}
         />
       </div>

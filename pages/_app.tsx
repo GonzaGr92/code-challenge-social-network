@@ -35,7 +35,6 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Social Network</title>
         <meta name="description" content="A simple social network" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <main className="container">
