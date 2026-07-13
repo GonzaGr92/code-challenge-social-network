@@ -70,7 +70,7 @@ export const ThreadCommentForm = ({
             {isLoadingComments ? (
               <Loading size="small" />
             ) : (
-              <UserPicker size="small" comments={comments} posts={[post]} />
+              <UserPicker size="small" comments={comments} posts={post ? [post] : undefined} />
             )}
           </div>
           <div className={styles.buttons}>

@@ -25,7 +25,7 @@ export const Dropdown = ({
   options,
   value = null,
   onChange,
-  placeholder,
+  placeholder = 'Select ...',
   disabled = false,
   className,
   buttonProps,
