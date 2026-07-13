@@ -21,7 +21,7 @@ export const PostThread = ({ post }: PostThreadProps) => {
         <ThreadPost post={post} comments_counter={data?.length || null} />
       </div>
       <div className={styles.form}>
-        <ThreadCommentForm />
+        <ThreadCommentForm parentId={null} postId={post.id} />
       </div>
       <div className={styles.comments}>
         {isLoading ? (
@@ -31,7 +31,7 @@ export const PostThread = ({ post }: PostThreadProps) => {
         ) : data.length <= 0 ? (
           'Not comments yet, be the first'
         ) : (
-          data.map(comment => <ThreadComment key={comment.id} comment={comment} isParent={true} />)
+          data.map(comment => <ThreadComment key={comment.id} comment={comment} isParent={true} postId={post.id} pz />)
         )}
       </div>
     </div>

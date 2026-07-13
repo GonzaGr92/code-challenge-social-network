@@ -8,6 +8,16 @@ import { mostRecentFirst } from '@/utils/date'
 
 // Fetchers
 
+async function getPlainComments(postId: string): Promise<Comment[]> {
+  if (!postId) {
+    throw new Error('Post ID is required')
+  }
+
+  const { data } = await axios.get<Comment[]>(`https://${HOST_ID}.mockapi.io/post/${postId}/comment`)
+
+  return data.sort(mostRecentFirst)
+}
+
 async function getComments(postId: string): Promise<NestedComment[]> {
   if (!postId) {
     throw new Error('Post ID is required')
@@ -45,6 +55,13 @@ async function deleteComment(postId: string, commentId: string): Promise<Comment
 }
 
 // Hooks
+
+export const useGetPlainComments = (postId: string) => {
+  return useQuery({
+    queryKey: [COMMENT_CACHE_KEY_NAMESPACE, postId],
+    queryFn: () => getPlainComments(postId),
+  })
+}
 
 export const useGetComments = (postId: string) => {
   return useQuery({

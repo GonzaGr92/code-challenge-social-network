@@ -19,6 +19,13 @@
   .content {
     margin-left: 2rem;
     font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .form {
+      margin-bottom: 0;
+    }
   }
 
   .footer {

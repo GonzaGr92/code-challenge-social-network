@@ -11,9 +11,10 @@ interface UserPickerProps {
   posts?: Post[]
   comments?: Comment[]
   placeholder?: string
+  size?: 'small' | 'medium' | 'large'
 }
 
-export const UserPicker = ({ posts = [], comments = [], placeholder }: UserPickerProps) => {
+export const UserPicker = ({ posts = [], comments = [], placeholder, size }: UserPickerProps) => {
   const { selectedUser, setSelectedUser } = useUserSettingsStore()
 
   const options: DropdownOption[] = useMemo(() => {
@@ -42,7 +43,7 @@ export const UserPicker = ({ posts = [], comments = [], placeholder }: UserPicke
 
   return (
     <Dropdown
-      buttonProps={{ size: 'medium', variant: 'outline' }}
+      buttonProps={{ size: size ?? 'medium', variant: 'outline' }}
       options={options}
       placeholder={placeholder}
       value={selectedUser?.value}
