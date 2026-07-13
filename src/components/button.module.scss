@@ -114,8 +114,8 @@
     border: 1px solid var(--foreground);
 
     &:hover {
-      background-color: var(--foreground);
-      color: var(--background);
+      background-color: var(--hover);
+      color: var(--foreground);
     }
   }
 
