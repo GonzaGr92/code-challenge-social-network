@@ -74,6 +74,11 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
+        env:
+          # configure-pages prefixes _next/* assets, but it doesn't set any env var,
+          # so pages/_document.tsx (favicons, manifest) can't see the basePath.
+          # Expose it here as the single source of truth read by next.config.ts and _document.
+          PAGES_BASE_PATH: /${{ github.event.repository.name }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
