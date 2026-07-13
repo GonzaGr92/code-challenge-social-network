@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   sassOptions: {
     includePaths: ['./styles'], // Allows importing from a central styles directory without nesting paths
   },
+  basePath: process.env.PAGES_BASE_PATH,
+  output: 'export',
 }
 
 export default nextConfig
