@@ -16,9 +16,17 @@ interface ThreadCommentFormProps {
   placeholder?: string
   className?: string
   onCancel?: () => void
+  onSuccess?: () => void
 }
 
-export const ThreadCommentForm = ({ postId, parentId, placeholder, className, onCancel }: ThreadCommentFormProps) => {
+export const ThreadCommentForm = ({
+  postId,
+  parentId,
+  placeholder,
+  className,
+  onCancel,
+  onSuccess,
+}: ThreadCommentFormProps) => {
   const { selectedUser } = useUserSettingsStore()
   const [isFocused, setIsFocused] = useState(false)
   const [content, setContent] = useState('')
@@ -39,6 +47,8 @@ export const ThreadCommentForm = ({ postId, parentId, placeholder, className, on
         comment: { name: selectedUser.name, avatar: selectedUser.avatar, content, parentId },
       })
       toast('Comment created', { type: 'success' })
+      setContent('')
+      onSuccess?.()
     } catch (error) {
       toast('There was an error trying to create the comment. Please retry later.', { type: 'error' })
     }

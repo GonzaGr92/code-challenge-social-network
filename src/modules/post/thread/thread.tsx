@@ -31,7 +31,7 @@ export const PostThread = ({ post }: PostThreadProps) => {
         ) : data.length <= 0 ? (
           'Not comments yet, be the first'
         ) : (
-          data.map(comment => <ThreadComment key={comment.id} comment={comment} isParent={true} postId={post.id} pz />)
+          data.map(comment => <ThreadComment key={comment.id} comment={comment} isParent={true} postId={post.id} />)
         )}
       </div>
     </div>

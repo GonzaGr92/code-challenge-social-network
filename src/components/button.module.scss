@@ -18,6 +18,10 @@
     justify-content: center;
     align-items: center;
 
+    .icon {
+      margin-right: 0;
+    }
+
     &.small {
       width: 2rem;
       height: 2rem;
@@ -80,6 +84,10 @@
     .icon {
       width: calc(1.25rem + 0.25rem);
     }
+  }
+
+  &.fullWidth {
+    width: 100% !important;
   }
 
   &.primary {

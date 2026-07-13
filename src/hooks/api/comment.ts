@@ -58,14 +58,14 @@ async function deleteComment(postId: string, commentId: string): Promise<Comment
 
 export const useGetPlainComments = (postId: string) => {
   return useQuery({
-    queryKey: [COMMENT_CACHE_KEY_NAMESPACE, postId],
+    queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetPlainComments', postId],
     queryFn: () => getPlainComments(postId),
   })
 }
 
 export const useGetComments = (postId: string) => {
   return useQuery({
-    queryKey: [COMMENT_CACHE_KEY_NAMESPACE, postId],
+    queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetComments', postId],
     queryFn: () => getComments(postId),
   })
 }
@@ -77,7 +77,8 @@ export const useCreateComment = () => {
     mutationFn: ({ postId, comment }: { postId: string; comment: NewComment }) => createComment(postId, comment),
     onSuccess: (_, { postId }) => {
       // TODO: Add the new post intead of invalidate the query to avoid refetching all posts
-      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, postId] })
+      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetPlainComments', postId] })
+      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetComments', postId] })
     },
   })
 }
@@ -89,7 +90,8 @@ export const useDeleteComment = () => {
     mutationFn: ({ postId, commentId }: { postId: string; commentId: string }) => deleteComment(postId, commentId),
     onSuccess: (_, { postId }) => {
       // TODO: Search and remove the comment from the cache instead of invalidate the query to avoid refetching all comments
-      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, postId] })
+      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetPlainComments', postId] })
+      queryClient.invalidateQueries({ queryKey: [COMMENT_CACHE_KEY_NAMESPACE, 'useGetComments', postId] })
     },
   })
 }

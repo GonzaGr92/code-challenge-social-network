@@ -1,8 +1,9 @@
-import { Ellipsis } from 'lucide-react'
 import Link from 'next/link'
 
 import { Avatar } from '@/components/avatar'
 import { Post } from '@/types/post'
+
+import { HomeActions } from './actions'
 
 import styles from './post.module.scss'
 
@@ -16,9 +17,7 @@ export const HomePost = ({ post }: HomePostProps) => {
       <Link href={`/post/${post.id}`} className={styles.mainCardLink} />
       <div className={styles.header}>
         <Avatar layout="horizontal" avatar={post.avatar} name={post.name} date={post.createdAt} />
-        <div className={styles.actions}>
-          <Ellipsis />
-        </div>
+        <HomeActions post={post} />
       </div>
       <div className={styles.body}>
         <div className={styles.title}>{post.title}</div>

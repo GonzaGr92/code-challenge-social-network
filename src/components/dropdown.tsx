@@ -18,16 +18,18 @@ interface DropdownProps {
   disabled?: boolean
   className?: string
   buttonProps?: ButtonProps
+  icon?: React.ReactNode
 }
 
 export const Dropdown = ({
   options,
   value = null,
   onChange,
-  placeholder = 'Select...',
+  placeholder,
   disabled = false,
   className,
   buttonProps,
+  icon,
 }: DropdownProps) => {
   const [open, setOpen] = useState(false)
   const [highlighted, setHighlighted] = useState(-1)
@@ -57,7 +59,7 @@ export const Dropdown = ({
     setHighlighted(-1)
   }
 
-  const handleSelect = (option: Option) => {
+  const handleSelect = (option: DropdownOption) => {
     onChange?.(option.value)
     close()
   }
@@ -93,12 +95,18 @@ export const Dropdown = ({
         onClick={toggle}
         onKeyDown={onKeyDown}
         className={styles.toggle}
+        icon={icon}
+        iconButton={icon ? true : false}
         {...buttonProps}
       >
-        {selected ? selected.label : <span className={styles.placeholder}>{placeholder}</span>}
-        <span className={styles.caret}>
-          <ChevronDown />
-        </span>
+        {!icon ? (
+          <>
+            {selected ? selected.label : <span className={styles.placeholder}>{placeholder}</span>}
+            <span className={styles.caret}>
+              <ChevronDown />
+            </span>
+          </>
+        ) : null}
       </Button>
 
       {open && (

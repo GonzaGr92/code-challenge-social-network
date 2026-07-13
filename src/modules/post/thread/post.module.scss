@@ -19,6 +19,12 @@
 
     .actions {
       margin-left: auto;
+
+      .dropdown {
+        li {
+          padding: 0;
+        }
+      }
     }
   }
 
